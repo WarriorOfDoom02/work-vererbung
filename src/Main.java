@@ -33,6 +33,7 @@ public class Main {
             System.out.println();
             System.out.println();
             System.out.println();
+
         }
     }
 
@@ -75,7 +76,7 @@ public class Main {
         if (selection == 1) {
             createAuto();
         } else if (selection == 2) {
-
+            createMotorrad();
         } else if (selection == 3) {
             createLKW();
         }
@@ -129,7 +130,56 @@ public class Main {
             System.out.println("Auto wurde erfolgreich geliefert!");
         } catch (Exception error) {
             System.out.println("Fehler: Auto konnte nicht geliefert werden!");
+        }
+
+
+    }
+
+    public static void createMotorrad() {
+        Scanner read = new Scanner(System.in);
+
+        String name;
+        int ps, maxKMH, stellplatz;
+
+        System.out.println("--Motorrad Konfigurator--");
+
+        try {
+            System.out.println("Auf welchen Stellplatz soll das Motorrad geliefert werden? (1-10)");
+            System.out.print("Stellplatz Nr.: ");
+            stellplatz = read.nextInt();
+            if (stellplatz <= 0 || stellplatz > 10) {
+                System.out.println("Fehlerhafte Eingabe!");
+                return;
+            }
+
+        } catch (Exception error) {
+            System.out.println("Fehlerhafte Eingabe!");
             return;
+        }
+
+
+        try {
+            System.out.print("Name des Motorrades (auch 1...10 möglich): ");
+            name = read.next();
+            System.out.println("PS: ");
+            ps = read.nextInt();
+            System.out.println("Maximale Geschwindigkeit: ");
+            maxKMH = read.nextInt();
+
+            System.out.println();
+            System.out.println("Eingabe erfolgreich. Motorrad wird gebaut!");
+
+        } catch (Exception error) {
+            System.out.println("Fehler: Ungültige Eingabe");
+            return;
+        }
+
+
+        try {
+            objekte[stellplatz-1] = new Objekt(name, new Motorrad(2, ps, maxKMH));
+            System.out.println("Motorrad wurde erfolgreich geliefert!");
+        } catch (Exception error) {
+            System.out.println("Fehler: Motorrad konnte nicht geliefert werden!");
         }
 
 
@@ -186,7 +236,6 @@ public class Main {
             System.out.println("LKW wurde erfolgreich geliefert!");
         } catch (Exception error) {
             System.out.println("Fehler: LKW konnte nicht geliefert werden!");
-            return;
         }
 
 
