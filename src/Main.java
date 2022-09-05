@@ -7,9 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner read = new Scanner(System.in);
-
         String selection = "";
-
 
         System.out.println("=====Dein Motorleben=====");
 
@@ -38,6 +36,9 @@ public class Main {
     }
 
     public static void eigeneFahrzeuge() {
+        Scanner read = new Scanner(System.in);
+        int selection;
+
         System.out.println("Welches Fahrzeug moechten Sie benutzen?");
         System.out.println();
         for (int i = 0; i < 10; i++) {
@@ -49,7 +50,17 @@ public class Main {
 
         }
         System.out.println();
+        try {
+            selection = read.nextInt();
+        } catch (Exception error) {
+            System.out.println("Fehlerhafte Eingabe");
+            return;
+        }
+
+
         System.out.println();
+
+
     }
 
     public static void neuesFahrzeug() {
@@ -134,6 +145,9 @@ public class Main {
 
 
     }
+
+
+    // TODO Create Motorrad
 
     public static void createMotorrad() {
         Scanner read = new Scanner(System.in);
