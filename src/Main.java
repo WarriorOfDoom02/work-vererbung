@@ -19,6 +19,7 @@ public class Main {
             System.out.println("Was möchten Sie tun?");
             System.out.println("1. Eigene Fahrzeuge");
             System.out.println("2. Neues Fahrzeug");
+            System.out.println("0. Program beenden");
 
 
             selection = read.next();
@@ -40,7 +41,7 @@ public class Main {
         System.out.println();
         for (int i = 0; i < 10; i++) {
             try {
-                System.out.println(objekte[i].name);
+                System.out.println((i+1)+ ". " + objekte[i].name);
             } catch (Exception error) {
                 System.out.println("Stellplatz " + (i+1) + " ist leer!");
             }
@@ -73,11 +74,16 @@ public class Main {
 
         if (selection == 1) {
             createAuto();
+        } else if (selection == 2) {
+
+        } else if (selection == 3) {
+            createLKW();
         }
         System.out.println();
         System.out.println();
     }
 
+    // TODO create Auto
     public static void createAuto() {
         Scanner read = new Scanner(System.in);
 
@@ -119,10 +125,67 @@ public class Main {
 
 
         try {
-            objekte[stellplatz-1] = new Objekt(name, new PKW(4, 150, 5));
-            System.out.println("Auto wurde erfolgreich gebaut!");
+            objekte[stellplatz-1] = new Objekt(name, new PKW(4, ps, sitze));
+            System.out.println("Auto wurde erfolgreich geliefert!");
         } catch (Exception error) {
-            System.out.println("Fehler: Auto konnte nicht gebaut werden!");
+            System.out.println("Fehler: Auto konnte nicht geliefert werden!");
+            return;
+        }
+
+
+    }
+
+
+    // TODO create LKW
+    public static void createLKW() {
+        Scanner read = new Scanner(System.in);
+
+        String name;
+        int anzahlRaeder, ps, stellplatz;
+        double maxLast;
+
+        System.out.println("--LKW Konfigurator--");
+
+        try {
+            System.out.println("Auf welchen Stellplatz soll der LKW geliefert werden? (1-10)");
+            System.out.print("Stellplatz Nr.: ");
+            stellplatz = read.nextInt();
+            if (stellplatz <= 0 || stellplatz > 10) {
+                System.out.println("Fehlerhafte Eingabe!");
+                return;
+            }
+
+        } catch (Exception error) {
+            System.out.println("Fehlerhafte Eingabe!");
+            return;
+        }
+
+
+        try {
+            System.out.print("Name des LKWs (auch 1...10 möglich): ");
+            name = read.next();
+            System.out.println("Anzahl Raeder: ");
+            anzahlRaeder= read.nextInt();
+            System.out.println("PS: ");
+            ps = read.nextInt();
+            System.out.println("Maximale Last: ");
+            maxLast = read.nextDouble();
+
+
+            System.out.println();
+            System.out.println("Eingabe erfolgreich. LKW wird gebaut!");
+
+        } catch (Exception error) {
+            System.out.println("Fehler: Ungültige Eingabe");
+            return;
+        }
+
+
+        try {
+            objekte[stellplatz-1] = new Objekt(name, new LKW(anzahlRaeder, ps, maxLast));
+            System.out.println("LKW wurde erfolgreich geliefert!");
+        } catch (Exception error) {
+            System.out.println("Fehler: LKW konnte nicht geliefert werden!");
             return;
         }
 
