@@ -18,4 +18,9 @@ public class KFZ {
     public void printData() {
         System.out.println();
     }
+
+    public int menu() {
+
+        return 1;
+    }
 }

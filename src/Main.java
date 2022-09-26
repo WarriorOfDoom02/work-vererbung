@@ -58,6 +58,7 @@ public class Main {
         }
 
 
+
         System.out.println();
 
 
@@ -72,7 +73,7 @@ public class Main {
         System.out.println("--Neues Fahrzeug einlagern--");
         System.out.println("");
 
-        System.out.println("Was möchtest du einlagern?");
+        System.out.println("Was moechtest du einlagern?");
         System.out.println("1. Auto");
         System.out.println("2. Motorrad");
         System.out.println("3. LKW");
