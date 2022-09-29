@@ -34,4 +34,8 @@ public class LKW extends KFZ{
         System.out.println("Aktuell hat der LKW " + beladung + " KG geladen.");
     }
 
+    @Override
+    public void menu() {
+        super.menu();
+    }
 }

@@ -6,11 +6,18 @@ public class Main {
     public static Objekt[] objekte = new Objekt[10];
 
     public static void main(String[] args) {
+        // Dummy Data:
+        // /*
+        objekte[0] = new Objekt("Berta", new PKW(4, 200, 5));
+        objekte[1] = new Objekt("BMW", new PKW(4, 50, 5));
+        objekte[2] = new Objekt("Mercedes", new PKW(4, 300, 5));
+        objekte[3] = new Objekt("Beatle", new PKW(4, 110, 4));
+        // */
+
         Scanner read = new Scanner(System.in);
         String selection = "";
 
         System.out.println("=====Dein Motorleben=====");
-
 
         while (!selection.equals("0")) {
 
@@ -18,7 +25,6 @@ public class Main {
             System.out.println("1. Eigene Fahrzeuge");
             System.out.println("2. Neues Fahrzeug");
             System.out.println("0. Program beenden");
-
 
             selection = read.next();
 
@@ -47,7 +53,6 @@ public class Main {
             } catch (Exception error) {
                 System.out.println("Stellplatz " + (i+1) + " ist leer!");
             }
-
         }
         System.out.println();
         try {
@@ -57,10 +62,13 @@ public class Main {
             return;
         }
 
-
+        if (objekte[selection - 1] != null) {
+            objekte[selection].fahrzeug.menu();
+        } else {
+            System.out.println("Der Stellplatz ist leer!");
+        }
 
         System.out.println();
-
 
     }
 
@@ -119,7 +127,6 @@ public class Main {
             return;
         }
 
-
         try {
             System.out.print("Name des Autos (auch 1...10 möglich): ");
             name = read.next();
@@ -136,20 +143,15 @@ public class Main {
             return;
         }
 
-
         try {
             objekte[stellplatz-1] = new Objekt(name, new PKW(4, ps, sitze));
             System.out.println("Auto wurde erfolgreich geliefert!");
         } catch (Exception error) {
             System.out.println("Fehler: Auto konnte nicht geliefert werden!");
         }
-
-
     }
 
-
     // TODO Create Motorrad
-
     public static void createMotorrad() {
         Scanner read = new Scanner(System.in);
 
@@ -166,12 +168,10 @@ public class Main {
                 System.out.println("Fehlerhafte Eingabe!");
                 return;
             }
-
         } catch (Exception error) {
             System.out.println("Fehlerhafte Eingabe!");
             return;
         }
-
 
         try {
             System.out.print("Name des Motorrades (auch 1...10 möglich): ");
@@ -189,17 +189,13 @@ public class Main {
             return;
         }
 
-
         try {
             objekte[stellplatz-1] = new Objekt(name, new Motorrad(2, ps, maxKMH));
             System.out.println("Motorrad wurde erfolgreich geliefert!");
         } catch (Exception error) {
             System.out.println("Fehler: Motorrad konnte nicht geliefert werden!");
         }
-
-
     }
-
 
     // TODO create LKW
     public static void createLKW() {
@@ -219,12 +215,10 @@ public class Main {
                 System.out.println("Fehlerhafte Eingabe!");
                 return;
             }
-
         } catch (Exception error) {
             System.out.println("Fehlerhafte Eingabe!");
             return;
         }
-
 
         try {
             System.out.print("Name des LKWs (auch 1...10 möglich): ");
@@ -236,7 +230,6 @@ public class Main {
             System.out.println("Maximale Last: ");
             maxLast = read.nextDouble();
 
-
             System.out.println();
             System.out.println("Eingabe erfolgreich. LKW wird gebaut!");
 
@@ -245,16 +238,11 @@ public class Main {
             return;
         }
 
-
         try {
             objekte[stellplatz-1] = new Objekt(name, new LKW(anzahlRaeder, ps, maxLast));
             System.out.println("LKW wurde erfolgreich geliefert!");
         } catch (Exception error) {
             System.out.println("Fehler: LKW konnte nicht geliefert werden!");
         }
-
-
     }
-
-
 }

@@ -19,8 +19,7 @@ public class KFZ {
         System.out.println();
     }
 
-    public int menu() {
+    public void menu() {
 
-        return 1;
     }
 }
