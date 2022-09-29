@@ -8,12 +8,8 @@ public class Objekt {
         this.fahrzeug = fahrzeug;
     }
 
-
     public boolean printData() {
         fahrzeug.printData();
         return false;
     }
-
-
-
 }
